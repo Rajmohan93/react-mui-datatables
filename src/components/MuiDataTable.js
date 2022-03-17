@@ -8,10 +8,12 @@ import Chip from '@material-ui/core/Chip';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 
+import ModalOpen from "./ModalOpen";
+
 function MuiDataTable() {
 
-    const [teachersData,
-        setTeachersData] = useState([]);
+    const [teachersData, setTeachersData] = useState([]);
+    const [nameModal, setNameModal] = useState(false);
 
     const columns_2 = [
         {
@@ -31,8 +33,9 @@ function MuiDataTable() {
                     return (
                         <div style={{color: "blue", textTransform: "capitalize", fontWeight: "bold"}}
                             onClick={(value) => {
-                                console.log(value.target);
-                                alert(value);
+                                setNameModal(true);
+                                // console.log(value.target);
+                                // alert(value);
                             }}>{value}
                         </div>
                     )
@@ -283,6 +286,8 @@ function MuiDataTable() {
                     options={options}
                 /> */}
             </MuiThemeProvider>
+
+            <ModalOpen show={nameModal} onHide={() => setNameModal(false)} />
         </div>
     )
 }
